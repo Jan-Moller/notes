@@ -1,10 +1,10 @@
 function getNoteTemplate(note, i) {
     return /*html*/`
-    <div class="list_element">
-    <li>${notesTitle[i]}</li>
-    <li>${note}</li>
-    <button onclick="deleteNote(${i}, '${note}')">Notiz löschen</button>
-    </div>`
+    <article class="note_card">
+        <h3>${notesTitle[i]}</h3>
+        <p class="note_content">${note}</p>
+        <button class="note_card_btn" onclick="deleteNote(${i}, '${note}')">Notiz löschen</button>
+</article>`
 }
 
 function getTrashNoteTemplate(trash_element, i) {

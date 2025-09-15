@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/styles/standard.css">
     <link rel="stylesheet" href="/styles/fonts.css">
     <link rel="stylesheet" href="/styles/assets.css">
+    <link rel="stylesheet" href="/styles/note.css">
 
 </head>
 
@@ -35,15 +36,25 @@
             </div>
             <button>Notiz speichern</button>
         </form>
-        <ul class="list_style" id="content"></ul>
     </section>
-    <section>
-        <h3 id="header_trash">Papierkorb (0)</h2>
-            <button onclick="openTrashDialog()">Papierkorb öffnen</button>
-            <dialog class="trash_dialog" id="trash_dialog">
-                <ul id="trash_content"></ul>
-            </dialog>
 
+    <section class="note_card_section" id="note_content"></section>
+
+    <section class="deleted_card_section">
+        <article>
+            <h3 id="header_archiv">Archiv (0)</h2>
+                <button onclick="openTrashDialog()">Archiv öffnen</button>
+                <dialog class="archiv_dialog" id="archiv_dialog">
+                    <ul id="archiv_content"></ul>
+                </dialog>
+        </article>
+        <article>
+            <h3 id="header_trash">Papierkorb (0)</h2>
+                <button onclick="openTrashDialog()">Papierkorb öffnen</button>
+                <dialog class="trash_dialog" id="trash_dialog">
+                    <ul id="trash_content"></ul>
+                </dialog>
+        </article>
     </section>
 
 </body>
