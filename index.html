@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notizblock</title>
+
+    <script src="/scripts/templates.js"></script>
+    <script src="scripts.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles/standard.css">
+    <link rel="stylesheet" href="/styles/fonts.css">
+    <link rel="stylesheet" href="/styles/assets.css">
+
+</head>
+
+<body onload="renderNotes()">
+
+    <header class="body_header">
+        <h1>Notizblock</h1>
+    </header>
+
+
+    <section>
+        <form class="input_form" onsubmit="addNote()">
+            <div class="note_input_element">
+                <label for="note_title_input"><strong>Title</strong></label>
+                <input class="note_input_field" required type="text" name="" id="note_title_input">
+            </div>
+            <div class="note_input_element">
+                <label for="note_input"><strong>Note</strong></label>
+                <textarea class="note_input_field" required type="text" name="" id="note_input"></textarea>
+            </div>
+            <button>Notiz speichern</button>
+        </form>
+        <ul class="list_style" id="content"></ul>
+    </section>
+    <section>
+        <h3 id="header_trash">Papierkorb (0)</h2>
+            <button onclick="openTrashDialog()">Papierkorb öffnen</button>
+            <dialog class="trash_dialog" id="trash_dialog">
+                <ul id="trash_content"></ul>
+            </dialog>
+
+    </section>
+
+</body>
+
+</html>
