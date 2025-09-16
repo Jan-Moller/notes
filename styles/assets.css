@@ -1,11 +1,28 @@
 button {
     width: 50vw;
     padding: 0;
-    margin: 10px;
+    margin: 16px;
     height: 36px;
     font-size: 18px;
     font-family: 'Arapey';
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border: none;
     background-color: #F0F0F0;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover {
+    filter:brightness(0.95);
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
+}
+
+textarea:focus {
+    outline: none;
 }

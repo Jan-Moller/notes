@@ -17,7 +17,7 @@
 
 </head>
 
-<body onload="renderNotes()">
+<body onload="init()">
 
     <header class="body_header">
         <h1>Notizblock</h1>
@@ -43,8 +43,9 @@
     <section class="deleted_card_section">
         <article>
             <h3 id="header_archiv">Archiv (0)</h2>
-                <button onclick="openTrashDialog()">Archiv öffnen</button>
+                <button onclick="openArchivDialog()">Archiv öffnen</button>
                 <dialog class="archiv_dialog" id="archiv_dialog">
+                    <h2 id="header_archiv_dialog">Archiv (0)</h2>
                     <ul id="archiv_content"></ul>
                 </dialog>
         </article>
@@ -52,6 +53,7 @@
             <h3 id="header_trash">Papierkorb (0)</h2>
                 <button onclick="openTrashDialog()">Papierkorb öffnen</button>
                 <dialog class="trash_dialog" id="trash_dialog">
+                    <h2 id="header_trash_dialog">Papierkorb (0)</h2>
                     <ul id="trash_content"></ul>
                 </dialog>
         </article>

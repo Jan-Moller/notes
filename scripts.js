@@ -1,9 +1,17 @@
 let notes = [];
 let notesTitle = [];
 
+let archivNotes = [];
+let archivNotesTitle = [];
+
 let trashNotes = [];
 let trashNotesTitle = [];
 
+function init() {
+    renderNotes();
+    renderArchiv();
+    renderTrash();
+}
 
 function renderNotes() {
     if (getFromLocalStorage('notes') && getFromLocalStorage('notes_title')) {
@@ -19,6 +27,23 @@ function renderNotes() {
     }
 }
 
+function renderArchiv() {
+    if (getFromLocalStorage('archivNotes') && getFromLocalStorage('archivTitle')) {
+        archivNotes = getFromLocalStorage('archivNotes');
+        archivNotesTitle = getFromLocalStorage('archivTitle');
+        renderArchivNote();
+        renderAmountArchivNotes();
+    }
+}
+
+function renderTrash() {
+    if (getFromLocalStorage('trashNotes') && getFromLocalStorage('trashNotesTitle')) {
+        trashNotes = getFromLocalStorage('trashNotes');
+        trashNotesTitle = getFromLocalStorage('trashNotesTitle');
+        renderTrashNote();
+        renderAmountTrashNotes();
+    }
+}
 
 function addNote() {
     let noteInputRef = document.getElementById('note_input');
@@ -36,24 +61,57 @@ function addNote() {
 
 }
 
-function deleteNote(i, note) {
-    let trashNote = notes.splice(i, 1);
-    let trashNoteTitle = notesTitle.splice(i, 1);
-    trashNotes.push(trashNote[0]);
-    trashNotesTitle.push(trashNoteTitle[0]);
+function archivNote(i, note) {
+    let archivNote = notes.splice(i, 1);
+    let archivNoteTitle = notesTitle.splice(i, 1);
+    archivNotes.push(archivNote[0]);
+    archivNotesTitle.push(archivNoteTitle[0]);
     saveToLocalStorage('notes', notes);
     saveToLocalStorage('notes_title', notesTitle);
+    saveToLocalStorage('archivNotes', archivNotes);
+    saveToLocalStorage('archivTitle', archivNotesTitle);
+    renderNotes();
+    renderArchivNote(note);
+    renderAmountArchivNotes();
+}
+
+function deleteArchivNote(i) {
+    let trashNote = archivNotes.splice(i, 1);
+    let trashNoteTitle = archivNotesTitle.splice(i, 1);
+    trashNotes.push(trashNote[0]);
+    trashNotesTitle.push(trashNoteTitle[0]);
+    renderArchivNote();
+    renderAmountArchivNotes();
+    saveToLocalStorage('archivNotes', archivNotes);
+    saveToLocalStorage('archivTitle', archivNotesTitle);
     saveToLocalStorage('trashNotes', trashNotes);
     saveToLocalStorage('trashNotesTitle', trashNotesTitle);
-    renderNotes();
-    renderTrashNote(note);
+    renderTrashNote();
     renderAmountTrashNotes();
+}
 
+function deleteTrashNote(i) {
+    trashNotes.splice(i, 1);
+    trashNotesTitle.splice(i, 1);
+    renderTrashNote();
+    renderAmountTrashNotes();
+    saveToLocalStorage('trashNotes', trashNotes);
+    saveToLocalStorage('trashNotesTitle', trashNotesTitle);
+}
+
+function renderArchivNote() {
+    let archivInputRef = document.getElementById('archiv_content');
+    archivInputRef.innerHTML = '';
+
+    for (let y = 0; y < archivNotes.length; y++) {
+        const archviv_element = archivNotes[y];
+        archivInputRef.innerHTML += getArchivNoteTemplate(archviv_element, y);
+    }
 }
 
 
 function renderTrashNote() {
-    let trashInputRef = document.getElementById('trash_dialog');
+    let trashInputRef = document.getElementById('trash_content');
     trashInputRef.innerHTML = '';
 
     for (let y = 0; y < trashNotes.length; y++) {
@@ -62,25 +120,33 @@ function renderTrashNote() {
     }
 }
 
+function renderAmountArchivNotes() {
+    let amountArchivNotesRef = document.getElementById('header_archiv');
+    let amountArchivNotesHeaderRef = document.getElementById('header_archiv_dialog');
+    let amountArchivNotes = archivNotes.length;
+    amountArchivNotesRef.innerHTML = `Archiv  (${amountArchivNotes})`
+    amountArchivNotesHeaderRef.innerHTML = `Archiv  (${amountArchivNotes})`
+}
+
 
 function renderAmountTrashNotes() {
     let amountTrashNotesRef = document.getElementById('header_trash');
+    let amountTrashNotesHeaderRef = document.getElementById('header_trash_dialog');
     let amountTrashNotes = trashNotes.length;
     amountTrashNotesRef.innerHTML = `Papierkorb  (${amountTrashNotes})`
+    amountTrashNotesHeaderRef.innerHTML = `Papierkorb  (${amountTrashNotes})`
 }
 
+function openArchivDialog() {
+    let dialog = document.getElementById('archiv_dialog');
+    dialog.showModal();
+}
 
 function openTrashDialog() {
     let dialog = document.getElementById('trash_dialog');
     dialog.showModal();
 }
 
-function deleteTrashNote(i) {
-    trashNotes.splice(i, 1);
-    renderTrashNote();
-    renderAmountTrashNotes();
-    saveToLocalStorage('trashNotes', trashNotes);
-}
 
 function saveToLocalStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
