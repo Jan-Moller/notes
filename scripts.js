@@ -147,12 +147,41 @@ function openTrashDialog() {
     dialog.showModal();
 }
 
+function pushNoteBack(i) {
+    let note = archivNotes.splice(i, 1);
+    let noteTitle = archivNotesTitle.splice(i, 1);
+
+    notes.push(note[0]);
+    notesTitle.push(noteTitle[0]);
+
+    saveToLocalStorage('notes', notes);
+    saveToLocalStorage('notes_title', notesTitle);
+    saveToLocalStorage('archivNotes', archivNotes);
+    saveToLocalStorage('archivTitle', archivNotesTitle);
+    init();
+}
+
+
+function pushTrashBack(i) {
+    let archivNote = trashNotes.splice(i, 1);
+    let trashTitle = trashNotesTitle.splice(i, 1);
+
+    archivNotes.push(archivNote[0]);
+    archivNotesTitle.push(trashTitle[0]);
+
+    saveToLocalStorage('trashNotes', trashNotes);
+    saveToLocalStorage('trashNotesTitle', trashNotesTitle);
+    saveToLocalStorage('archivNotes', archivNotes);
+    saveToLocalStorage('archivTitle', archivNotesTitle);
+    init();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const archivDialog = document.getElementById('archiv_dialog');
     const trashDialog = document.getElementById('trash_dialog');
 
     if (archivDialog) {
-        archivDialog.addEventListener('click', function(event) {
+        archivDialog.addEventListener('click', function (event) {
             if (event.target === archivDialog) {
                 archivDialog.close();
             }
@@ -160,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (trashDialog) {
-        trashDialog.addEventListener('click', function(event) {
+        trashDialog.addEventListener('click', function (event) {
             if (event.target === trashDialog) {
                 trashDialog.close();
             }

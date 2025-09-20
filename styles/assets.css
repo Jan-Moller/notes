@@ -20,10 +20,21 @@ button:hover {
     cursor: pointer;
 }
 
+input {
+    font-family: 'Arapey' !important;
+    font-size: 16px;
+}
+
 input:focus {
     outline: none;
+}
+
+textarea {
+    font-family: 'Arapey' !important;
+    font-size: 16px;
 }
 
 textarea:focus {
     outline: none;
 }
+
