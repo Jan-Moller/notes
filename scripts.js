@@ -147,6 +147,27 @@ function openTrashDialog() {
     dialog.showModal();
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const archivDialog = document.getElementById('archiv_dialog');
+    const trashDialog = document.getElementById('trash_dialog');
+
+    if (archivDialog) {
+        archivDialog.addEventListener('click', function(event) {
+            if (event.target === archivDialog) {
+                archivDialog.close();
+            }
+        });
+    }
+
+    if (trashDialog) {
+        trashDialog.addEventListener('click', function(event) {
+            if (event.target === trashDialog) {
+                trashDialog.close();
+            }
+        });
+    }
+});
+
 
 function saveToLocalStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value));

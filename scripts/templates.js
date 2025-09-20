@@ -9,18 +9,20 @@ function getNoteTemplate(note, i) {
 
 function getArchivNoteTemplate(archivElement, i) {
     return /*html*/ `
-        <div class="list_element">
-            <li>${archivElement}</li>
-            <button onclick="deleteArchivNote(${i})">Notiz in den Papierkorb legen</button>
+        <div class="archiv_element">
+            <h3>${archivNotesTitle[i]}</h3>
+            <p class="archiv_delete_element">${archivElement}</p>
+            <button class="dialog_delete_btn" onclick="deleteArchivNote(${i})">Notiz in den Papierkorb legen</button>
         </div>
     `
 }
 
 function getTrashNoteTemplate(trash_element, i) {
     return /*html*/ `
-        <div class="list_element">
-            <li>${trash_element}</li>
-            <button onclick="deleteTrashNote(${i})">Endgültig löschen</button>
+        <div class="trash_element">
+            <h3>${trashNotesTitle[i]}</h3>
+            <p class="archiv_delete_element">${trash_element}</p>
+            <button class="dialog_delete_btn" onclick="deleteTrashNote(${i})">Endgültig löschen</button>
         </div>
     `
 }

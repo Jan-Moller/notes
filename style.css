@@ -44,7 +44,7 @@ body {
     margin: 16px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border: none;
-     background-color: #F0F0F0;
+    background-color: #F0F0F0;
 }
 
 .note_input_element textarea {
@@ -59,7 +59,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 56px; 
+    margin-top: 56px;
 }
 
 .deleted_card_section button {
@@ -76,7 +76,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    border: none; 
+    border: none;
     width: 70vw;
     height: 70vh;
 }
@@ -91,7 +91,19 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    border: none; 
+    border: none;
     width: 70vw;
     height: 70vh;
+}
+
+.archiv_trash_dialog_content_position {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrap_archiv_trash_content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }

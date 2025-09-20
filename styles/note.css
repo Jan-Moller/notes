@@ -32,3 +32,37 @@
     height: 18px;
     font-size: 16px;
 }
+
+.dialog_delete_btn {
+    width: 240px !important;
+}
+
+.archiv_element {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 250px;
+    width: 250px;
+    margin: 16px;
+    padding: 12px;
+}
+
+.trash_element {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 250px;
+    width: 250px;
+    margin: 16px;
+    padding: 12px;
+}
+
+.archiv_delete_element {
+    width: 100%;
+    flex: 1;
+    overflow: auto;
+}
